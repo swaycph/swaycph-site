@@ -1,4 +1,11 @@
 (function () {
+  // Only one thing plays at a time: starting a song or a video pauses everything else.
+  document.addEventListener('play', function (e) {
+    document.querySelectorAll('audio, video').forEach(function (m) {
+      if (m !== e.target && !m.paused) m.pause();
+    });
+  }, true);
+
   var player = document.getElementById('player');
   var audio = document.getElementById('audio');
   var playBtn = document.getElementById('play-main');
