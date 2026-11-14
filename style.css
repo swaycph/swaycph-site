@@ -164,11 +164,15 @@ button.play { border: none; cursor: pointer; }
 .record span { justify-content: center; }
 .record span::after { content: ""; position: absolute; width: 8%; aspect-ratio: 1; border-radius: 50%; background: var(--ground); bottom: 18%; }
 .music-on .record { animation-play-state: running; }
+/* Light sheen and label mark make the rotation visible; plain grooves look the same at every angle */
+.record::before, .mini-record::before { content: ""; position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
+  background: conic-gradient(from 20deg, transparent 0deg, rgba(255,255,255,0.10) 18deg, transparent 40deg, transparent 180deg, rgba(255,255,255,0.07) 198deg, transparent 220deg); }
 @keyframes spin { to { transform: rotate(360deg); } }
-.mini-record { flex: none; width: 72px; aspect-ratio: 1; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+.mini-record { position: relative; flex: none; width: 72px; aspect-ratio: 1; border-radius: 50%; display: flex; align-items: center; justify-content: center;
   background: repeating-radial-gradient(circle at center, var(--groove-a) 0 1.5px, var(--groove-c) 1.5px 3px); animation: spin 3s linear infinite; animation-play-state: paused; }
 .mini-record span { width: 36%; aspect-ratio: 1; border-radius: 50%; background: var(--gold); position: relative; }
 .mini-record span::after { content: ""; position: absolute; inset: 40%; border-radius: 50%; background: var(--ground); }
+.mini-record span::before { content: ""; position: absolute; left: 46%; top: 6%; width: 8%; height: 28%; border-radius: 2px; background: var(--ground); opacity: 0.7; }
 .music-on .mini-record { animation-play-state: running; }
 @media (prefers-reduced-motion: reduce) { .record { animation-duration: 14s; } .mini-record { animation-duration: 8s; } }
 
