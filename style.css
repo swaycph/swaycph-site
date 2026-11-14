@@ -14,7 +14,7 @@
   --groove-b: #1A1E29;
   --groove-c: #222737;
   --shade: 11, 13, 17;
-  --serif: 'Cormorant Garamond', Georgia, serif;
+  --serif: 'Bricolage Grotesque', system-ui, sans-serif;
 }
 
 /* Previous petrol-and-gold palette, kept as a fallback: open with ?theme=classic */
@@ -42,15 +42,16 @@ body {
   margin: 0;
   background: var(--ground);
   color: var(--text);
-  font-family: 'Syne', system-ui, sans-serif;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
   font-size: 17px;
   line-height: 1.6;
 }
 img { max-width: 100%; display: block; }
+button, input { font: inherit; }
 a { color: var(--gold); }
 a:hover { color: var(--gold-hover); }
 
-h1, h2, h3 { font-family: var(--serif); font-weight: 700; letter-spacing: -0.005em; margin: 0; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 700; letter-spacing: -0.03em; margin: 0; }
 h2 { font-size: clamp(40px, 6vw, 64px); line-height: 1; }
 h3 { font-size: 28px; margin-top: 8px; }
 
@@ -76,7 +77,7 @@ h3 { font-size: 28px; margin-top: 8px; }
 .hero-grid { display: grid; grid-template-columns: 6fr 5fr; gap: 40px; align-items: start; padding-top: 0; }
 .hero-text { display: flex; flex-direction: column; gap: 22px; }
 .eyebrow { margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
-.hero h1 { font-size: clamp(88px, 13vw, 190px); line-height: 0.8; margin: -0.06em 0 0 -0.04em; color: var(--gold); }
+.hero h1 { font-weight: 800; letter-spacing: -0.03em; font-size: clamp(88px, 13vw, 190px); line-height: 0.8; margin: -0.06em 0 0 -0.04em; color: var(--gold); }
 .occasions { margin: -8px 0 0; font-size: 15px; font-weight: 500; letter-spacing: 0.02em; color: var(--gold); }
 .lead { margin: 0; max-width: 620px; font-size: 21px; line-height: 1.5; color: var(--soft); }
 .buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
@@ -141,7 +142,7 @@ button.play { border: none; cursor: pointer; }
 .rep-row ul { list-style: none; margin: 0; padding: 0; display: flex; }
 .rep-row li { white-space: nowrap; display: flex; align-items: center; font-family: var(--serif); font-weight: 600; font-size: clamp(24px, 3vw, 36px); color: var(--text); line-height: 1.2; }
 .rep-row li::after { content: "✦"; font-size: 0.45em; color: var(--gold); margin: 0 0.9em; }
-.rep-row.reverse li { color: var(--gold); font-style: italic; }
+.rep-row.reverse li { color: var(--gold); font-weight: 400; }
 .repertoire:hover .rep-row { animation-play-state: paused; }
 @keyframes rep { to { transform: translateX(-50%); } }
 
@@ -152,19 +153,19 @@ button.play { border: none; cursor: pointer; }
 .bio-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
 .bio { margin: 0; font-size: 18px; color: var(--soft); }
 /* Collage */
-.collage { position: relative; justify-self: start; width: min(100%, 340px); margin-top: 20px; }
+.collage { position: relative; justify-self: start; width: min(100%, 374px); margin-top: 20px; }
 .cover { position: relative; z-index: 2; margin: 0; aspect-ratio: 1; border-radius: 6px; overflow: hidden; transform: rotate(-4deg); box-shadow: 0 24px 60px rgba(0,0,0,0.6); outline: 1px solid rgba(241,235,221,0.08); }
 .cover img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 62%; }
 .cover figcaption { position: absolute; inset: auto 0 0 0; padding: 40px 16px 14px; display: flex; flex-direction: column; background: linear-gradient(to top, rgba(var(--shade),0.92), rgba(var(--shade),0)); }
 .cover-top { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
 .cover-title { font-family: var(--serif); font-weight: 700; font-size: 26px; line-height: 1.1; color: var(--text); }
-.record { z-index: 1; position: absolute; right: -52%; top: 5%; width: 90%; aspect-ratio: 1; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+.record { z-index: 1; position: absolute; right: -47%; top: 10%; width: 80%; aspect-ratio: 1; border-radius: 50%; display: flex; align-items: center; justify-content: center;
   background: repeating-radial-gradient(circle at center, var(--groove-a) 0 2px, var(--groove-b) 2px 4px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); animation: spin 6s linear infinite; animation-play-state: paused; }
 .record span { width: 34%; aspect-ratio: 1; border-radius: 50%; background: var(--gold); color: var(--ground); display: flex; align-items: center; justify-content: flex-end; flex-direction: column; padding-bottom: 0; font-family: var(--serif); font-weight: 700; font-size: clamp(14px, 1.6vw, 22px); position: relative; }
 .record span { justify-content: center; }
 .record span::after { content: ""; position: absolute; width: 8%; aspect-ratio: 1; border-radius: 50%; background: var(--ground); bottom: 18%; }
-@media (max-width: 1180px) and (min-width: 761px) { .collage { width: min(100%, 260px); } }
-@media (max-width: 960px) and (min-width: 761px) { .collage { width: min(100%, 190px); } }
+@media (max-width: 1180px) and (min-width: 761px) { .collage { width: min(100%, 286px); } }
+@media (max-width: 960px) and (min-width: 761px) { .collage { width: min(100%, 209px); } }
 .music-on .record { animation-play-state: running; }
 /* Light sheen and label mark make the rotation visible; plain grooves look the same at every angle */
 .record::before, .mini-record::before { content: ""; position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
@@ -181,7 +182,7 @@ button.play { border: none; cursor: pointer; }
 @media (max-width: 760px) {
   .bio-cols { grid-template-columns: 1fr; gap: 16px; }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; min-height: 0; padding-top: 16px; }
-  .collage { width: 66%; margin: 8px 0 0 4px; }
+  .collage { width: 68%; margin: 8px 0 0 4px; }
 }
 .members { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
 .members figure { margin: 0; display: flex; flex-direction: column; gap: 12px; }
