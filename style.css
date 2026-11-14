@@ -46,7 +46,7 @@ h3 { font-size: 28px; margin-top: 24px; }
 .icon-link { display: inline-flex; align-items: center; }
 
 /* Hero */
-.hero { padding-top: 72px; padding-bottom: 96px; display: flex; flex-direction: column; gap: 28px; }
+.hero { padding-top: 72px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 28px; }
 .eyebrow { margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
 .hero h1 { font-size: clamp(64px, 14vw, 200px); line-height: 0.85; color: var(--gold); }
 .lead { margin: 0; max-width: 620px; font-size: 21px; line-height: 1.5; color: var(--soft); }
@@ -101,15 +101,21 @@ button.play { border: none; cursor: pointer; }
 .clip figcaption span { color: var(--muted); font-size: 14px; }
 
 /* Band */
-.band-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
-.band-text { display: flex; flex-direction: column; gap: 20px; }
-.bio-lead { margin: 0; font-family: var(--serif); font-weight: 600; font-size: clamp(26px, 3vw, 34px); line-height: 1.2; color: var(--text); }
+.band > .wrap { padding-top: 24px; }
+.band-intro { display: flex; flex-direction: column; gap: 20px; max-width: 900px; }
+.bio-lead { margin: 0; font-family: var(--serif); font-weight: 600; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.2; color: var(--text); }
+.bio-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
 .bio { margin: 0; font-size: 18px; color: var(--soft); }
-.band-cta { align-self: flex-start; margin-top: 8px; }
-.band-main { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 75%; border-radius: 20px; }
+.mosaic { display: grid; grid-template-columns: 5fr 6fr; grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 20px; height: min(78vw, 720px); }
+.mosaic img { width: 100%; height: 100%; min-height: 0; object-fit: cover; border-radius: 18px; }
+.m-main { grid-row: 1 / 3; object-position: center 75%; }
+.m-a, .m-b { object-position: center 60%; }
 @media (max-width: 760px) {
-  .band-grid { grid-template-columns: 1fr; gap: 32px; }
-  .band-main { aspect-ratio: 4 / 4.5; }
+  .bio-cols { grid-template-columns: 1fr; gap: 16px; }
+  .mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; height: auto; gap: 12px; }
+  .m-main { grid-row: auto; grid-column: 1 / 3; aspect-ratio: 4 / 4.5; }
+  .m-a, .m-b { aspect-ratio: 1 / 1; }
+  .members { grid-template-columns: 1fr 1fr; gap: 16px; }
 }
 .members { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
 .members figure { margin: 0; display: flex; flex-direction: column; gap: 12px; }
