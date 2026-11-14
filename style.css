@@ -1,24 +1,4 @@
 :root {
-  --ground: #0E1A1C;
-  --ground-2: #132325;
-  --line: #213436;
-  --text: #F1EBDD;
-  --soft: #C9D2CE;
-  --muted: #A9B8B6;
-  --gold: #D9A84A;
-  --gold-hover: #E8C27A;
-  --petrol: #1F6E78;
-  --edge: #4E6563;
-  --card-2: #1C2E30;
-  --groove-a: #0A1213;
-  --groove-b: #17282A;
-  --groove-c: #1E3335;
-  --shade: 14, 26, 28;
-  --serif: 'Cormorant Garamond', Georgia, serif;
-}
-
-/* Alternative palette inspired by a night-blue jazz album cover: open with ?theme=paris */
-:root.theme-paris {
   --ground: #0B0D11;
   --ground-2: #151820;
   --line: #252A36;
@@ -34,6 +14,26 @@
   --groove-b: #1A1E29;
   --groove-c: #222737;
   --shade: 11, 13, 17;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Previous petrol-and-gold palette, kept as a fallback: open with ?theme=classic */
+:root.theme-classic {
+  --ground: #0E1A1C;
+  --ground-2: #132325;
+  --line: #213436;
+  --text: #F1EBDD;
+  --soft: #C9D2CE;
+  --muted: #A9B8B6;
+  --gold: #D9A84A;
+  --gold-hover: #E8C27A;
+  --petrol: #1F6E78;
+  --edge: #4E6563;
+  --card-2: #1C2E30;
+  --groove-a: #0A1213;
+  --groove-b: #17282A;
+  --groove-c: #1E3335;
+  --shade: 14, 26, 28;
 }
 
 * { box-sizing: border-box; }
