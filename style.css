@@ -57,6 +57,9 @@ h3 { font-size: 28px; margin-top: 8px; }
 .wrap { max-width: 1180px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
 .stack { display: flex; flex-direction: column; gap: 24px; }
 .section > .wrap { padding-top: 40px; padding-bottom: 40px; }
+#listen > .wrap { padding-bottom: 20px; }
+#live > .wrap { padding-top: 32px; }
+.player { padding-bottom: 12px; }
 .bordered { border-top: 1px solid var(--line); }
 .muted { color: var(--muted); font-size: 15px; margin: 0; }
 .label { font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
@@ -133,7 +136,8 @@ button.play { border: none; cursor: pointer; }
 .rep-list { list-style: none; margin: 0; padding: 0 24px; display: flex; flex-wrap: wrap; gap: 4px 28px; max-width: 1180px; margin: 0 auto; }
 .rep-list[hidden] { display: none; }
 .rep-list li { font-family: var(--serif); font-weight: 600; font-size: 26px; color: var(--soft); }
-.rep-rows.is-moving { display: flex; flex-direction: column; gap: 6px; }
+.rep-rows.is-moving { display: flex; flex-direction: column; gap: 6px; width: min(1132px, calc(100% - 48px)); margin: 0 auto; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); }
 .rep-row { display: flex; width: max-content; animation: rep 70s linear infinite; }
 .rep-row.reverse { animation-direction: reverse; animation-duration: 85s; }
 .rep-row ul { list-style: none; margin: 0; padding: 0; display: flex; }
