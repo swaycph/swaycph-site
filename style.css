@@ -46,9 +46,11 @@ h3 { font-size: 28px; margin-top: 24px; }
 .lang-toggle:hover { border-color: var(--gold); color: var(--gold); }
 
 /* Hero */
-.hero { padding-top: 24px; padding-bottom: 72px; display: flex; flex-direction: column; gap: 24px; }
+.hero { padding-bottom: 72px; overflow: hidden; }
+.hero-grid { display: grid; grid-template-columns: 5fr 6fr; gap: 56px; align-items: center; min-height: min(680px, calc(100vh - 110px)); }
+.hero-text { display: flex; flex-direction: column; gap: 24px; }
 .eyebrow { margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
-.hero h1 { font-size: clamp(64px, 10vw, 136px); line-height: 0.85; color: var(--gold); }
+.hero h1 { font-size: clamp(80px, 12vw, 176px); line-height: 0.85; color: var(--gold); }
 .lead { margin: 0; max-width: 620px; font-size: 21px; line-height: 1.5; color: var(--soft); }
 .buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
 
@@ -105,15 +107,39 @@ button.play { border: none; cursor: pointer; }
 .bio-lead { margin: 0; font-family: var(--serif); font-weight: 600; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.2; color: var(--text); }
 .bio-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
 .bio { margin: 0; font-size: 18px; color: var(--soft); }
-.mosaic { margin-top: 16px; display: grid; grid-template-columns: 5fr 7fr; gap: 20px; height: min(46vw, 560px); }
-.mosaic img { width: 100%; height: 100%; min-height: 0; object-fit: cover; border-radius: 18px; }
-.m-main { object-position: center 70%; }
-.m-a { object-position: center 60%; }
+/* Collage */
+.collage { position: relative; aspect-ratio: 6 / 5; }
+.collage img { position: absolute; display: block; object-fit: cover; }
+.c-wide { z-index: 2; top: 0; right: 0; width: 84%; aspect-ratio: 3 / 2; border-radius: 18px; object-position: center 60%; }
+.c-tall { z-index: 3; left: 0; bottom: 0; width: 44%; aspect-ratio: 4 / 5; border-radius: 14px; object-position: center 70%; border: 8px solid var(--ground); transform: rotate(-4deg); box-shadow: 0 24px 60px rgba(0,0,0,0.55); }
+.record { z-index: 1; position: absolute; right: -4%; top: 52%; width: 40%; aspect-ratio: 1; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  background: repeating-radial-gradient(circle at center, #0A1213 0 2px, #17282A 2px 4px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); animation: spin 6s linear infinite; animation-play-state: paused; }
+.record span { width: 34%; aspect-ratio: 1; border-radius: 50%; background: var(--gold); color: var(--ground); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-weight: 700; font-size: clamp(14px, 1.6vw, 22px); position: relative; }
+.record span::after { content: ""; position: absolute; width: 8%; aspect-ratio: 1; border-radius: 50%; background: var(--ground); bottom: 18%; }
+.music-on .record { animation-play-state: running; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Ticker */
+.ticker { background: var(--gold); color: var(--ground); overflow: hidden; }
+.ticker-track { display: flex; width: max-content; animation: tick 45s linear infinite; }
+.ticker ul { display: flex; list-style: none; margin: 0; padding: 16px 0; }
+.ticker li { display: flex; align-items: center; white-space: nowrap; font-family: var(--serif); font-weight: 700; font-size: 24px; }
+.ticker li::after { content: "✦"; font-size: 14px; margin: 0 28px; opacity: 0.6; }
+@keyframes tick { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; width: auto; }
+  .ticker ul { flex-wrap: wrap; justify-content: center; padding: 16px 24px; row-gap: 4px; }
+  .ticker ul[aria-hidden] { display: none; }
+  .record { animation: none; }
+}
 @media (max-width: 760px) {
   .bio-cols { grid-template-columns: 1fr; gap: 16px; }
-  .mosaic { grid-template-columns: 1fr; height: auto; gap: 12px; }
-  .m-main { aspect-ratio: 4 / 4.5; }
-  .m-a { aspect-ratio: 3 / 2; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; min-height: 0; padding-top: 16px; }
+  .collage { aspect-ratio: 1 / 1; }
+  .c-wide { width: 90%; }
+  .c-tall { width: 48%; border-width: 6px; }
+  .record { width: 52%; top: 44%; right: -6%; }
+  .ticker li { font-size: 20px; }
 }
 .members { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
 .members figure { margin: 0; display: flex; flex-direction: column; gap: 12px; }
