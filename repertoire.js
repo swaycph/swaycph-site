@@ -27,6 +27,14 @@
 
   list.setAttribute('hidden', '');
   rows.classList.add('is-moving');
-  rows.appendChild(makeRow(groups[0], false));
-  rows.appendChild(makeRow(groups[1], true));
+  var r1 = makeRow(groups[0], false);
+  var r2 = makeRow(groups[1], true);
+  rows.appendChild(r1);
+  rows.appendChild(r2);
+
+  // Keep a calm, even speed whatever the number of titles (about 40 px per second).
+  [r1, r2].forEach(function (row, i) {
+    var seconds = Math.max(30, Math.round(row.scrollWidth / 2 / (i ? 34 : 40)));
+    row.style.animationDuration = seconds + 's';
+  });
 })();
