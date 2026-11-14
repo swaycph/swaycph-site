@@ -1,4 +1,24 @@
 :root {
+  --ground: #0B0D11;
+  --ground-2: #151820;
+  --line: #252A36;
+  --text: #ECEEF5;
+  --soft: #C3C6D4;
+  --muted: #9298AE;
+  --gold: #93A9D3;
+  --gold-hover: #B8C8E8;
+  --petrol: #2B3A63;
+  --edge: #4A5270;
+  --card-2: #1D2130;
+  --groove-a: #07080B;
+  --groove-b: #1A1E29;
+  --groove-c: #222737;
+  --shade: 11, 13, 17;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Previous petrol-and-gold palette, kept as a fallback: open with ?theme=classic */
+:root.theme-classic {
   --ground: #0E1A1C;
   --ground-2: #132325;
   --line: #213436;
@@ -8,7 +28,12 @@
   --gold: #D9A84A;
   --gold-hover: #E8C27A;
   --petrol: #1F6E78;
-  --serif: 'Cormorant Garamond', Georgia, serif;
+  --edge: #4E6563;
+  --card-2: #1C2E30;
+  --groove-a: #0A1213;
+  --groove-b: #17282A;
+  --groove-c: #1E3335;
+  --shade: 14, 26, 28;
 }
 
 * { box-sizing: border-box; }
@@ -42,7 +67,7 @@ h3 { font-size: 28px; margin-top: 24px; }
 .nav a { color: var(--soft); text-decoration: none; padding: 10px 0; }
 .nav a:hover { color: var(--gold); }
 .icon-link { display: inline-flex; align-items: center; }
-.lang-toggle { min-width: 44px; min-height: 36px; padding: 0 12px; border-radius: 999px; border: 1.5px solid #4E6563; background: none; color: var(--soft); font: inherit; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; cursor: pointer; align-self: center; margin-left: 8px; }
+.lang-toggle { min-width: 44px; min-height: 36px; padding: 0 12px; border-radius: 999px; border: 1.5px solid var(--edge); background: none; color: var(--soft); font: inherit; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; cursor: pointer; align-self: center; margin-left: 8px; }
 .lang-toggle:hover { border-color: var(--gold); color: var(--gold); }
 
 /* Hero */
@@ -59,12 +84,12 @@ h3 { font-size: 28px; margin-top: 24px; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 26px; border-radius: 999px; font-weight: 700; text-decoration: none; }
 .btn-solid { background: var(--gold); color: var(--ground); }
 .btn-solid:hover { background: var(--gold-hover); color: var(--ground); }
-.btn-ghost { border: 1.5px solid #4E6563; color: var(--text); }
+.btn-ghost { border: 1.5px solid var(--edge); color: var(--text); }
 .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
 .btn-dark { min-height: 56px; background: var(--ground); color: var(--text); }
 .btn-dark:hover { color: var(--gold-hover); }
 .btn-light-ghost { border: 1.5px solid var(--text); color: var(--text); }
-.btn-light-ghost:hover { background: rgba(14,26,28,0.2); color: var(--text); }
+.btn-light-ghost:hover { background: rgba(var(--shade),0.2); color: var(--text); }
 
 /* Listen */
 .section-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px; }
@@ -98,7 +123,7 @@ button.play { border: none; cursor: pointer; }
 .live { background: var(--ground-2); }
 .clips { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
 .clip { margin: 0; display: flex; flex-direction: column; gap: 10px; }
-.clip video { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 14px; background: #1C2E30; display: block; }
+.clip video { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 14px; background: var(--card-2); display: block; }
 .clip figcaption { display: flex; flex-direction: column; line-height: 1.4; }
 .clip figcaption span { color: var(--muted); font-size: 14px; }
 
@@ -112,18 +137,18 @@ button.play { border: none; cursor: pointer; }
 .collage { position: relative; justify-self: start; width: min(100%, 290px); margin-top: 28px; }
 .cover { position: relative; z-index: 2; margin: 0; aspect-ratio: 1; border-radius: 6px; overflow: hidden; transform: rotate(-4deg); box-shadow: 0 24px 60px rgba(0,0,0,0.6); outline: 1px solid rgba(241,235,221,0.08); }
 .cover img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 62%; }
-.cover figcaption { position: absolute; inset: auto 0 0 0; padding: 40px 16px 14px; display: flex; flex-direction: column; background: linear-gradient(to top, rgba(14,26,28,0.92), rgba(14,26,28,0)); }
+.cover figcaption { position: absolute; inset: auto 0 0 0; padding: 40px 16px 14px; display: flex; flex-direction: column; background: linear-gradient(to top, rgba(var(--shade),0.92), rgba(var(--shade),0)); }
 .cover-top { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
 .cover-title { font-family: var(--serif); font-weight: 700; font-size: 26px; line-height: 1.1; color: var(--text); }
 .record { z-index: 1; position: absolute; right: -52%; top: 5%; width: 90%; aspect-ratio: 1; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  background: repeating-radial-gradient(circle at center, #0A1213 0 2px, #17282A 2px 4px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); animation: spin 6s linear infinite; animation-play-state: paused; }
+  background: repeating-radial-gradient(circle at center, var(--groove-a) 0 2px, var(--groove-b) 2px 4px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); animation: spin 6s linear infinite; animation-play-state: paused; }
 .record span { width: 34%; aspect-ratio: 1; border-radius: 50%; background: var(--gold); color: var(--ground); display: flex; align-items: center; justify-content: flex-end; flex-direction: column; padding-bottom: 0; font-family: var(--serif); font-weight: 700; font-size: clamp(14px, 1.6vw, 22px); position: relative; }
 .record span { justify-content: center; }
 .record span::after { content: ""; position: absolute; width: 8%; aspect-ratio: 1; border-radius: 50%; background: var(--ground); bottom: 18%; }
 .music-on .record { animation-play-state: running; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .mini-record { flex: none; width: 72px; aspect-ratio: 1; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  background: repeating-radial-gradient(circle at center, #0A1213 0 1.5px, #1E3335 1.5px 3px); animation: spin 3s linear infinite; animation-play-state: paused; }
+  background: repeating-radial-gradient(circle at center, var(--groove-a) 0 1.5px, var(--groove-c) 1.5px 3px); animation: spin 3s linear infinite; animation-play-state: paused; }
 .mini-record span { width: 36%; aspect-ratio: 1; border-radius: 50%; background: var(--gold); position: relative; }
 .mini-record span::after { content: ""; position: absolute; inset: 40%; border-radius: 50%; background: var(--ground); }
 .music-on .mini-record { animation-play-state: running; }
