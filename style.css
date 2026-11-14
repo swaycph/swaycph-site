@@ -42,7 +42,7 @@ body {
   margin: 0;
   background: var(--ground);
   color: var(--text);
-  font-family: 'DM Sans', system-ui, sans-serif;
+  font-family: 'Syne', system-ui, sans-serif;
   font-size: 17px;
   line-height: 1.6;
 }
@@ -73,7 +73,7 @@ h3 { font-size: 28px; margin-top: 8px; }
 
 /* Hero */
 .hero { padding-bottom: 40px; overflow: hidden; }
-.hero-grid { display: grid; grid-template-columns: 7fr 5fr; gap: 48px; align-items: start; padding-top: 0; }
+.hero-grid { display: grid; grid-template-columns: 6fr 5fr; gap: 40px; align-items: start; padding-top: 0; }
 .hero-text { display: flex; flex-direction: column; gap: 22px; }
 .eyebrow { margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
 .hero h1 { font-size: clamp(88px, 13vw, 190px); line-height: 0.8; margin: -0.06em 0 0 -0.04em; color: var(--gold); }
@@ -152,7 +152,7 @@ button.play { border: none; cursor: pointer; }
 .bio-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
 .bio { margin: 0; font-size: 18px; color: var(--soft); }
 /* Collage */
-.collage { position: relative; justify-self: start; width: min(100%, 290px); margin-top: 28px; }
+.collage { position: relative; justify-self: start; width: min(100%, 340px); margin-top: 20px; }
 .cover { position: relative; z-index: 2; margin: 0; aspect-ratio: 1; border-radius: 6px; overflow: hidden; transform: rotate(-4deg); box-shadow: 0 24px 60px rgba(0,0,0,0.6); outline: 1px solid rgba(241,235,221,0.08); }
 .cover img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 62%; }
 .cover figcaption { position: absolute; inset: auto 0 0 0; padding: 40px 16px 14px; display: flex; flex-direction: column; background: linear-gradient(to top, rgba(var(--shade),0.92), rgba(var(--shade),0)); }
@@ -163,6 +163,8 @@ button.play { border: none; cursor: pointer; }
 .record span { width: 34%; aspect-ratio: 1; border-radius: 50%; background: var(--gold); color: var(--ground); display: flex; align-items: center; justify-content: flex-end; flex-direction: column; padding-bottom: 0; font-family: var(--serif); font-weight: 700; font-size: clamp(14px, 1.6vw, 22px); position: relative; }
 .record span { justify-content: center; }
 .record span::after { content: ""; position: absolute; width: 8%; aspect-ratio: 1; border-radius: 50%; background: var(--ground); bottom: 18%; }
+@media (max-width: 1180px) and (min-width: 761px) { .collage { width: min(100%, 260px); } }
+@media (max-width: 960px) and (min-width: 761px) { .collage { width: min(100%, 190px); } }
 .music-on .record { animation-play-state: running; }
 /* Light sheen and label mark make the rotation visible; plain grooves look the same at every angle */
 .record::before, .mini-record::before { content: ""; position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
@@ -179,7 +181,7 @@ button.play { border: none; cursor: pointer; }
 @media (max-width: 760px) {
   .bio-cols { grid-template-columns: 1fr; gap: 16px; }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; min-height: 0; padding-top: 16px; }
-  .collage { width: 58%; margin: 8px 0 0 4px; }
+  .collage { width: 66%; margin: 8px 0 0 4px; }
 }
 .members { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
 .members figure { margin: 0; display: flex; flex-direction: column; gap: 12px; }
