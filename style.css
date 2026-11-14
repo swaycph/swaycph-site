@@ -73,6 +73,25 @@ h3 { font-size: 28px; margin-top: 24px; }
 .play { width: 64px; height: 64px; flex: none; border-radius: 999px; background: var(--gold); color: var(--ground); display: flex; align-items: center; justify-content: center; }
 .play:hover { background: var(--gold-hover); color: var(--ground); }
 
+/* Player */
+.player { display: flex; flex-direction: column; gap: 20px; }
+.player-top { display: flex; align-items: center; gap: 20px; }
+.now { flex: 1; min-width: 0; }
+button.play { border: none; cursor: pointer; }
+.play .i-pause, .is-playing .play .i-play { display: none; }
+.is-playing .play .i-pause { display: block; }
+.progress { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.progress input { flex: 1; min-width: 0; accent-color: var(--gold); height: 24px; cursor: pointer; }
+.tracks { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.tracks li { border-bottom: 1px solid var(--line); }
+.tracks button { width: 100%; display: flex; align-items: center; gap: 16px; padding: 14px 4px; min-height: 56px; background: none; border: none; color: var(--text); font: inherit; text-align: left; cursor: pointer; }
+.tracks button:hover .t-info b, .tracks button.active .t-info b { color: var(--gold); }
+.t-num { width: 24px; flex: none; color: var(--muted); font-variant-numeric: tabular-nums; }
+.tracks button.active .t-num { color: var(--gold); }
+.t-info { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.35; }
+.t-info span { color: var(--muted); font-size: 14px; }
+.t-len { color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; }
+
 /* Band */
 .band-grid { display: flex; flex-wrap: wrap; gap: 24px; align-items: stretch; }
 .band-main { flex: 1 1 360px; min-width: 0; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 75%; border-radius: 20px; }

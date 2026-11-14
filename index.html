@@ -46,15 +46,30 @@
       <h2>Listen</h2>
       <p class="muted">Mixed recordings from the rehearsal room and the stage</p>
     </div>
-    <div class="card listen-card">
-      <a href="https://on.soundcloud.com/yB9J6mprpmKfEeMu5l" target="_blank" rel="noopener" class="play" aria-label="Play our playlist on SoundCloud">
-        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>
-      </a>
-      <div>
-        <div class="label">SoundCloud playlist</div>
-        <div class="card-title">Hear Sway on SoundCloud</div>
+    <div class="card player" id="player">
+      <div class="player-top">
+        <button type="button" class="play" id="play-main" aria-label="Play">
+          <svg class="i-play" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>
+          <svg class="i-pause" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><rect x="6" y="4.5" width="4" height="15" rx="1"/><rect x="14" y="4.5" width="4" height="15" rx="1"/></svg>
+        </button>
+        <div class="now">
+          <div class="label">Now playing</div>
+          <div class="card-title" id="now-title">Sway Medley</div>
+        </div>
       </div>
-      <a href="https://on.soundcloud.com/yB9J6mprpmKfEeMu5l" target="_blank" rel="noopener" class="btn btn-ghost">Open playlist</a>
+      <div class="progress">
+        <span id="t-cur">0:00</span>
+        <input type="range" id="seek" min="0" max="100" step="0.1" value="0" aria-label="Seek">
+        <span id="t-dur">0:00</span>
+      </div>
+      <ol class="tracks" id="tracks">
+        <li><button type="button" data-src="audio/sway-medley.mp3"><span class="t-num">1</span><span class="t-info"><b>Sway Medley</b><span>Sway</span></span><span class="t-len">4:19</span></button></li>
+        <li><button type="button" data-src="audio/there-will-never-be-another-you.mp3"><span class="t-num">2</span><span class="t-info"><b>There Will Never Be Another You</b><span>Harry Warren &amp; Mack Gordon</span></span><span class="t-len">4:46</span></button></li>
+        <li><button type="button" data-src="audio/just-the-two-of-us.mp3"><span class="t-num">3</span><span class="t-info"><b>Just the Two of Us</b><span>Grover Washington Jr. &amp; Bill Withers</span></span><span class="t-len">3:40</span></button></li>
+        <li><button type="button" data-src="audio/save-your-love-for-me.mp3"><span class="t-num">4</span><span class="t-info"><b>Save Your Love for Me</b><span>Buddy Johnson</span></span><span class="t-len">6:13</span></button></li>
+        <li><button type="button" data-src="audio/triste.mp3"><span class="t-num">5</span><span class="t-info"><b>Triste</b><span>Antônio Carlos Jobim</span></span><span class="t-len">4:27</span></button></li>
+      </ol>
+      <audio id="audio" preload="none"></audio>
     </div>
   </div>
 </section>
@@ -104,6 +119,8 @@
   <span>Sway CPH · Copenhagen · swaycph.dk</span>
   <a href="https://www.instagram.com/swaysocial_cph/" target="_blank" rel="noopener">@swaysocial_cph</a>
 </footer>
+
+<script src="player.js"></script>
 
 </body>
 </html>
