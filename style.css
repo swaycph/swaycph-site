@@ -148,7 +148,7 @@ button.play { border: none; cursor: pointer; }
 
 /* Band */
 .band > .wrap { padding-top: 24px; }
-.band-intro { display: flex; flex-direction: column; gap: 20px; max-width: 900px; }
+.band-intro { display: flex; flex-direction: column; gap: 20px; }
 .bio-lead { margin: 0; font-family: var(--serif); font-weight: 600; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.2; color: var(--text); }
 .bio-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
 .bio { margin: 0; font-size: 18px; color: var(--soft); }
