@@ -30,8 +30,8 @@ h2 { font-size: clamp(40px, 6vw, 64px); line-height: 1; }
 h3 { font-size: 28px; margin-top: 24px; }
 
 .wrap { max-width: 1180px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
-.stack { display: flex; flex-direction: column; gap: 36px; }
-.section > .wrap { padding-top: 88px; padding-bottom: 88px; }
+.stack { display: flex; flex-direction: column; gap: 28px; }
+.section > .wrap { padding-top: 56px; padding-bottom: 56px; }
 .bordered { border-top: 1px solid var(--line); }
 .muted { color: var(--muted); font-size: 15px; margin: 0; }
 .label { font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
@@ -46,7 +46,7 @@ h3 { font-size: 28px; margin-top: 24px; }
 .lang-toggle:hover { border-color: var(--gold); color: var(--gold); }
 
 /* Hero */
-.hero { padding-bottom: 64px; overflow: hidden; }
+.hero { padding-bottom: 40px; overflow: hidden; }
 .hero-grid { display: grid; grid-template-columns: 7fr 5fr; gap: 48px; align-items: start; padding-top: 0; }
 .hero-text { display: flex; flex-direction: column; gap: 22px; }
 .eyebrow { margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
@@ -142,7 +142,7 @@ button.play { border: none; cursor: pointer; }
 
 /* Contact */
 .contact { background: var(--petrol); }
-.contact > .wrap { padding-top: 96px; padding-bottom: 96px; }
+.contact > .wrap { padding-top: 72px; padding-bottom: 72px; }
 .contact-inner { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 40px; }
 .contact-text { flex: 1 1 420px; display: flex; flex-direction: column; gap: 16px; }
 .contact-text h2 { font-size: clamp(44px, 7vw, 88px); line-height: 0.95; }
