@@ -52,11 +52,11 @@ a:hover { color: var(--gold-hover); }
 
 h1, h2, h3 { font-family: var(--serif); font-weight: 700; letter-spacing: -0.005em; margin: 0; }
 h2 { font-size: clamp(40px, 6vw, 64px); line-height: 1; }
-h3 { font-size: 28px; margin-top: 24px; }
+h3 { font-size: 28px; margin-top: 8px; }
 
 .wrap { max-width: 1180px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
-.stack { display: flex; flex-direction: column; gap: 28px; }
-.section > .wrap { padding-top: 56px; padding-bottom: 56px; }
+.stack { display: flex; flex-direction: column; gap: 24px; }
+.section > .wrap { padding-top: 40px; padding-bottom: 40px; }
 .bordered { border-top: 1px solid var(--line); }
 .muted { color: var(--muted); font-size: 15px; margin: 0; }
 .label { font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
@@ -127,6 +127,22 @@ button.play { border: none; cursor: pointer; }
 .clip figcaption { display: flex; flex-direction: column; line-height: 1.4; }
 .clip figcaption span { color: var(--muted); font-size: 14px; }
 
+/* Repertoire marquee */
+.repertoire { padding: 8px 0 24px; overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.repertoire .label { padding-top: 16px; padding-bottom: 8px; }
+.rep-list { list-style: none; margin: 0; padding: 0 24px; display: flex; flex-wrap: wrap; gap: 4px 28px; max-width: 1180px; margin: 0 auto; }
+.rep-list[hidden] { display: none; }
+.rep-list li { font-family: var(--serif); font-weight: 600; font-size: 26px; color: var(--soft); }
+.rep-rows.is-moving { display: flex; flex-direction: column; gap: 6px; }
+.rep-row { display: flex; width: max-content; animation: rep 70s linear infinite; }
+.rep-row.reverse { animation-direction: reverse; animation-duration: 85s; }
+.rep-row ul { list-style: none; margin: 0; padding: 0; display: flex; }
+.rep-row li { white-space: nowrap; display: flex; align-items: center; font-family: var(--serif); font-weight: 600; font-size: clamp(24px, 3vw, 36px); color: var(--soft); }
+.rep-row li::after { content: "✦"; font-size: 0.45em; color: var(--gold); margin: 0 0.9em; }
+.rep-row.reverse li { color: var(--muted); font-style: italic; }
+.repertoire:hover .rep-row { animation-play-state: paused; }
+@keyframes rep { to { transform: translateX(-50%); } }
+
 /* Band */
 .band > .wrap { padding-top: 24px; }
 .band-intro { display: flex; flex-direction: column; gap: 20px; max-width: 900px; }
@@ -167,7 +183,7 @@ button.play { border: none; cursor: pointer; }
 
 /* Contact */
 .contact { background: var(--petrol); }
-.contact > .wrap { padding-top: 72px; padding-bottom: 72px; }
+.contact > .wrap { padding-top: 56px; padding-bottom: 56px; }
 .contact-inner { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 40px; }
 .contact-text { flex: 1 1 420px; display: flex; flex-direction: column; gap: 16px; }
 .contact-text h2 { font-size: clamp(44px, 7vw, 88px); line-height: 0.95; }
