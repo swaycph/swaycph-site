@@ -159,7 +159,7 @@ button.play { border: none; cursor: pointer; }
 .cover figcaption { position: absolute; inset: auto 0 0 0; padding: 40px 16px 14px; display: flex; flex-direction: column; background: linear-gradient(to top, rgba(var(--shade),0.92), rgba(var(--shade),0)); }
 .cover-top { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
 .cover-title { font-family: var(--serif); font-weight: 700; font-size: 26px; line-height: 1.1; color: var(--text); }
-.record { z-index: 1; position: absolute; right: -58%; top: 3%; width: 94%; aspect-ratio: 1; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+.record { z-index: 1; position: absolute; right: -58%; top: -2%; width: 94%; aspect-ratio: 1; border-radius: 50%; display: flex; align-items: center; justify-content: center;
   background: repeating-radial-gradient(circle at center, var(--groove-a) 0 2px, var(--groove-b) 2px 4px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); animation: spin 6s linear infinite; animation-play-state: paused; }
 .record span { width: 34%; aspect-ratio: 1; border-radius: 50%; background: var(--gold); color: var(--ground); display: flex; align-items: center; justify-content: flex-end; flex-direction: column; padding-bottom: 0; font-family: var(--serif); font-weight: 700; font-size: clamp(14px, 1.6vw, 22px); position: relative; }
 .record span { justify-content: center; }
