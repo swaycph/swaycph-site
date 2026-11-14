@@ -92,6 +92,14 @@ button.play { border: none; cursor: pointer; }
 .t-info span { color: var(--muted); font-size: 14px; }
 .t-len { color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; }
 
+/* Live */
+.live { background: var(--ground-2); }
+.clips { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+.clip { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.clip video { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 14px; background: #1C2E30; display: block; }
+.clip figcaption { display: flex; flex-direction: column; line-height: 1.4; }
+.clip figcaption span { color: var(--muted); font-size: 14px; }
+
 /* Band */
 .band-grid { display: flex; flex-wrap: wrap; gap: 24px; align-items: stretch; }
 .band-main { flex: 1 1 360px; min-width: 0; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 75%; border-radius: 20px; }
