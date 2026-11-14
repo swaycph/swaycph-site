@@ -10,6 +10,15 @@
   var index = 0;
   var seeking = false;
 
+  function label(kind) {
+    var en = document.documentElement.lang === 'en';
+    if (kind === 'pause') return en ? 'Pause' : 'Pause';
+    return en ? 'Play' : 'Afspil';
+  }
+  document.addEventListener('langchange', function () {
+    playBtn.setAttribute('aria-label', label(audio.paused ? 'play' : 'pause'));
+  });
+
   function fmt(s) {
     if (!isFinite(s)) return '0:00';
     var m = Math.floor(s / 60), r = Math.floor(s % 60);
@@ -43,11 +52,11 @@
 
   audio.addEventListener('play', function () {
     player.classList.add('is-playing');
-    playBtn.setAttribute('aria-label', 'Pause');
+    playBtn.setAttribute('aria-label', label('pause'));
   });
   audio.addEventListener('pause', function () {
     player.classList.remove('is-playing');
-    playBtn.setAttribute('aria-label', 'Play');
+    playBtn.setAttribute('aria-label', label('play'));
   });
   audio.addEventListener('loadedmetadata', function () { dur.textContent = fmt(audio.duration); });
   audio.addEventListener('timeupdate', function () {
