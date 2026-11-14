@@ -14,7 +14,7 @@
   --groove-b: #1A1E29;
   --groove-c: #222737;
   --shade: 11, 13, 17;
-  --serif: 'Cormorant Garamond', Georgia, serif;
+  --serif: 'Bricolage Grotesque', system-ui, sans-serif;
 }
 
 /* Previous petrol-and-gold palette, kept as a fallback: open with ?theme=classic */
@@ -42,15 +42,16 @@ body {
   margin: 0;
   background: var(--ground);
   color: var(--text);
-  font-family: 'Syne', system-ui, sans-serif;
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
   font-size: 17px;
   line-height: 1.6;
 }
 img { max-width: 100%; display: block; }
+button, input { font: inherit; }
 a { color: var(--gold); }
 a:hover { color: var(--gold-hover); }
 
-h1, h2, h3 { font-family: var(--serif); font-weight: 700; letter-spacing: -0.005em; margin: 0; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 700; letter-spacing: -0.03em; margin: 0; }
 h2 { font-size: clamp(40px, 6vw, 64px); line-height: 1; }
 h3 { font-size: 28px; margin-top: 8px; }
 
@@ -76,7 +77,7 @@ h3 { font-size: 28px; margin-top: 8px; }
 .hero-grid { display: grid; grid-template-columns: 6fr 5fr; gap: 40px; align-items: start; padding-top: 0; }
 .hero-text { display: flex; flex-direction: column; gap: 22px; }
 .eyebrow { margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
-.hero h1 { font-size: clamp(88px, 13vw, 190px); line-height: 0.8; margin: -0.06em 0 0 -0.04em; color: var(--gold); }
+.hero h1 { font-weight: 800; letter-spacing: -0.03em; font-size: clamp(88px, 13vw, 190px); line-height: 0.8; margin: -0.06em 0 0 -0.04em; color: var(--gold); }
 .occasions { margin: -8px 0 0; font-size: 15px; font-weight: 500; letter-spacing: 0.02em; color: var(--gold); }
 .lead { margin: 0; max-width: 620px; font-size: 21px; line-height: 1.5; color: var(--soft); }
 .buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
@@ -141,7 +142,7 @@ button.play { border: none; cursor: pointer; }
 .rep-row ul { list-style: none; margin: 0; padding: 0; display: flex; }
 .rep-row li { white-space: nowrap; display: flex; align-items: center; font-family: var(--serif); font-weight: 600; font-size: clamp(24px, 3vw, 36px); color: var(--text); line-height: 1.2; }
 .rep-row li::after { content: "✦"; font-size: 0.45em; color: var(--gold); margin: 0 0.9em; }
-.rep-row.reverse li { color: var(--gold); font-style: italic; }
+.rep-row.reverse li { color: var(--gold); font-weight: 400; }
 .repertoire:hover .rep-row { animation-play-state: paused; }
 @keyframes rep { to { transform: translateX(-50%); } }
 
