@@ -57,8 +57,6 @@ h3 { font-size: 28px; margin-top: 8px; }
 .wrap { max-width: 1180px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
 .stack { display: flex; flex-direction: column; gap: 24px; }
 .section > .wrap { padding-top: 40px; padding-bottom: 40px; }
-#listen > .wrap { padding-bottom: 20px; }
-#live > .wrap { padding-top: 32px; }
 .player { padding-bottom: 12px; }
 .bordered { border-top: 1px solid var(--line); }
 .muted { color: var(--muted); font-size: 15px; margin: 0; }
