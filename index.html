@@ -12,8 +12,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261114c">
+<link rel="stylesheet" href="style.css?v=20261114g">
 <script>if (/[?&]theme=classic\b/.test(location.search)) document.documentElement.classList.add('theme-classic');</script>
+<script>
+  // Always open at the top: no restored scroll position, and drop a #section left in the address by an earlier click.
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+  window.addEventListener('load', function () { window.scrollTo(0, 0); });
+</script>
 </head>
 <body>
 
@@ -58,18 +64,39 @@
   <p class="label wrap" id="rep-label" data-en="From our repertoire">Fra vores repertoire</p>
   <div class="rep-rows" id="rep-rows">
     <ul class="rep-list" id="rep-songs">
+      <li>Autumn Leaves</li>
+      <li>Misty</li>
+      <li>Summertime</li>
       <li>Days of Wine and Roses</li>
       <li>There Will Never Be Another You</li>
-      <li>Just the Two of Us</li>
-      <li>Save Your Love for Me</li>
-      <li>Triste</li>
-      <li>Når jeg bliver gammel</li>
-      <li>Wave</li>
-      <li>Don't Let Me Be Lonely Tonight</li>
-      <li>Fragile</li>
+      <li>A Night in Tunisia</li>
+      <li>Alone Together</li>
+      <li>Beautiful Love</li>
+      <li>Willow Weep for Me</li>
+      <li>Stolen Moments</li>
+      <li>It Might as Well Be Spring</li>
       <li>Without a Song</li>
+      <li>Save Your Love for Me</li>
+      <li>Wild Is the Wind</li>
+      <li>I Will Wait for You</li>
+      <li>Når jeg bliver gammel</li>
+      <li>Ain't No Sunshine</li>
+      <li>Just the Two of Us</li>
+      <li>Use Me</li>
+      <li>Teardrops</li>
+      <li>For Once in My Life</li>
+      <li>Englishman in New York</li>
+      <li>Fragile</li>
+      <li>Here Comes the Rain Again</li>
+      <li>50 Ways to Leave Your Lover</li>
+      <li>Chevy 56</li>
+      <li>How Come You Don't Call Me Anymore</li>
+      <li>Chega de Saudade</li>
+      <li>Triste</li>
+      <li>Wave</li>
+      <li>The Old Country</li>
       <li>Love Is a Time of Year</li>
-      <li>Sway Medley</li>
+      <li>Don't Let Me Be Lonely Tonight</li>
     </ul>
   </div>
 </section>
@@ -179,9 +206,9 @@
   <a href="https://www.instagram.com/swaysocial_cph/" target="_blank" rel="noopener" class="footer-ig"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg>Instagram</a>
 </footer>
 
-<script src="i18n.js?v=20261114c"></script>
-<script src="player.js?v=20261114c"></script>
-<script src="repertoire.js?v=20261114c"></script>
+<script src="i18n.js?v=20261114g"></script>
+<script src="player.js?v=20261114g"></script>
+<script src="repertoire.js?v=20261114g"></script>
 
 </body>
 </html>
