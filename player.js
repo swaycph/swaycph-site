@@ -52,10 +52,12 @@
 
   audio.addEventListener('play', function () {
     player.classList.add('is-playing');
+    document.body.classList.add('music-on');
     playBtn.setAttribute('aria-label', label('pause'));
   });
   audio.addEventListener('pause', function () {
     player.classList.remove('is-playing');
+    document.body.classList.remove('music-on');
     playBtn.setAttribute('aria-label', label('play'));
   });
   audio.addEventListener('loadedmetadata', function () { dur.textContent = fmt(audio.duration); });
