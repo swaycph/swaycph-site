@@ -15,13 +15,26 @@
   .rehearsal .lead { max-width: 640px; }
   .albums { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
   .album { border-radius: 14px; background: var(--ground-2); border: 1px solid var(--line); overflow: hidden; }
-  .album summary { list-style: none; cursor: pointer; display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 18px 22px; min-height: 56px; }
-  .album summary::-webkit-details-marker { display: none; }
-  .album summary::after { content: "+"; font-size: 24px; line-height: 1; color: var(--gold); margin-left: 8px; }
-  .album[open] summary::after { content: "–"; }
+  .a-head { width: 100%; display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 18px 22px; min-height: 56px; background: none; border: 0; color: var(--text); text-align: left; cursor: pointer; }
+  .a-head::after { content: "+"; font-size: 24px; line-height: 1; color: var(--gold); margin-left: 8px; }
+  .album.open .a-head::after { content: "–"; }
   .a-title { font-weight: 700; font-size: 20px; flex: 1; }
   .a-date { color: var(--muted); font-size: 15px; }
-  .album summary:hover .a-title { color: var(--gold); }
+  .a-head:hover .a-title { color: var(--gold); }
+  .album:not(.open) .a-player { height: 0; padding: 0; overflow: hidden; }
+  .search { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+  .search input { width: 100%; min-height: 52px; padding: 0 18px; border-radius: 999px; border: 1.5px solid var(--edge); background: var(--ground-2); color: var(--text); font-size: 18px; }
+  .search input:focus { outline: none; border-color: var(--gold); }
+  .s-status { margin: 0; min-height: 1.4em; color: var(--muted); font-size: 14px; }
+  .results { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+  .results:empty { display: none; }
+  .results li { border-bottom: 1px solid var(--line); }
+  .results button { width: 100%; display: flex; align-items: center; gap: 16px; padding: 12px 4px; min-height: 52px; background: none; border: 0; color: var(--text); text-align: left; cursor: pointer; }
+  .results button:hover b { color: var(--gold); }
+  .r-play { flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--gold); color: var(--ground); display: flex; align-items: center; justify-content: center; }
+  .r-info { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.35; }
+  .r-info span { color: var(--muted); font-size: 14px; }
+  .r-len { color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; }
   .a-player { padding: 0 12px 12px; }
   .a-player iframe { width: 100%; height: 400px; border: 0; border-radius: 10px; display: block; }
 </style>
@@ -39,20 +52,27 @@
   <h1>Øvelokalet</h1>
   <p class="lead">Rå optagelser fra vores øvninger. Nye numre dukker op her, så snart vi har lagt dem op.</p>
 
+  <div class="search" role="search">
+    <label for="q" class="label">Find et nummer på tværs af alle album</label>
+    <input id="q" type="search" placeholder="Fx Misty, wave, autum…" autocomplete="off" spellcheck="false">
+    <p class="s-status" id="s-status" aria-live="polite"></p>
+    <ol class="results" id="results"></ol>
+  </div>
+
   <!--
-    One <details> per SoundCloud album, newest first.
+    One .album per SoundCloud album, newest first.
     data-sc: for a public album, its share link (Share → Copy link).
              For a private album, the src link from its embed code (Share → Embed), which contains secret_token.
   -->
   <div class="albums">
-    <details class="album" data-sc="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2315002014%3Fsecret_token%3Ds-elptXDDxpAd">
-      <summary><span class="a-title">Studio session</span><span class="a-date">september 2026</span></summary>
+    <div class="album" data-sc="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2315002014%3Fsecret_token%3Ds-elptXDDxpAd">
+      <button type="button" class="a-head" aria-expanded="false"><span class="a-title">Studio session</span><span class="a-date">september 2026</span></button>
       <div class="a-player"></div>
-    </details>
-    <details class="album" data-sc="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A2254788800">
-      <summary><span class="a-title">7Vini – sidste øvning før koncerten 18. juni</span><span class="a-date">juni 2026</span></summary>
+    </div>
+    <div class="album" data-sc="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A2254788800">
+      <button type="button" class="a-head" aria-expanded="false"><span class="a-title">7Vini – sidste øvning før koncerten 18. juni</span><span class="a-date">juni 2026</span></button>
       <div class="a-player"></div>
-    </details>
+    </div>
   </div>
 </main>
 
@@ -60,28 +80,7 @@
   <span>Sway CPH · swaycph.dk</span>
 </footer>
 
-<script>
-  // Load each SoundCloud player only when its album is opened.
-  document.querySelectorAll('.album').forEach(function (d) {
-    d.addEventListener('toggle', function () {
-      var slot = d.querySelector('.a-player');
-      if (!d.open || slot.firstChild) return;
-      // data-sc is either SoundCloud's own player link from the embed code (used exactly as given,
-      // which private albums need for their secret_token), or a public album's share link.
-      var raw = d.dataset.sc;
-      var opts = '&color=%2393a9d3&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false';
-      var src = raw.indexOf('w.soundcloud.com/player') !== -1
-        ? raw.split('&')[0] + opts
-        : 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(raw.split('?')[0]) + opts;
-      var f = document.createElement('iframe');
-      f.src = src;
-      f.title = d.querySelector('.a-title').textContent;
-      f.allow = 'autoplay; encrypted-media';
-      f.loading = 'lazy';
-      slot.appendChild(f);
-    });
-  });
-</script>
+<script src="search.js"></script>
 
 </body>
 </html>
