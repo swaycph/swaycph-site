@@ -41,11 +41,16 @@
 
   <!--
     One <details> per SoundCloud album, newest first.
-    data-sc: the album's share link from SoundCloud (Share → Copy link), without the ?si=… part.
+    data-sc: for a public album, its share link (Share → Copy link).
+             For a private album, the src link from its embed code (Share → Embed), which contains secret_token.
   -->
   <div class="albums">
-    <details class="album" data-sc="https://soundcloud.com/torbenblange/sets/sway-studio-session-sept-2026/s-elptXDDxpAd">
+    <details class="album" data-sc="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%3Aplaylists%3A2315002014%3Fsecret_token%3Ds-elptXDDxpAd">
       <summary><span class="a-title">Studio session</span><span class="a-date">september 2026</span></summary>
+      <div class="a-player"></div>
+    </details>
+    <details class="album" data-sc="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A2254788800">
+      <summary><span class="a-title">7Vini – sidste øvning før koncerten 18. juni</span><span class="a-date">juni 2026</span></summary>
       <div class="a-player"></div>
     </details>
   </div>
@@ -61,7 +66,14 @@
     d.addEventListener('toggle', function () {
       var slot = d.querySelector('.a-player');
       if (!d.open || slot.firstChild) return;
-      var url = d.dataset.sc.split('?')[0];
+      // data-sc may be a public share link, or (for private albums) the api.soundcloud.com link
+      // from the embed code, which carries its secret_token and must be kept whole.
+      var raw = d.dataset.sc;
+      if (raw.indexOf('w.soundcloud.com/player') !== -1) {
+        var m = raw.match(/[?&]url=([^&]+)/);
+        raw = m ? decodeURIComponent(m[1]) : raw;
+      }
+      var url = raw.indexOf('api.soundcloud.com') !== -1 ? raw : raw.split('?')[0];
       var src = 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(url) +
         '&color=%2393a9d3&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false';
       var f = document.createElement('iframe');
