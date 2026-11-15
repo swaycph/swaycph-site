@@ -66,20 +66,17 @@
     d.addEventListener('toggle', function () {
       var slot = d.querySelector('.a-player');
       if (!d.open || slot.firstChild) return;
-      // data-sc may be a public share link, or (for private albums) the api.soundcloud.com link
-      // from the embed code, which carries its secret_token and must be kept whole.
+      // data-sc is either SoundCloud's own player link from the embed code (used exactly as given,
+      // which private albums need for their secret_token), or a public album's share link.
       var raw = d.dataset.sc;
-      if (raw.indexOf('w.soundcloud.com/player') !== -1) {
-        var m = raw.match(/[?&]url=([^&]+)/);
-        raw = m ? decodeURIComponent(m[1]) : raw;
-      }
-      var url = raw.indexOf('api.soundcloud.com') !== -1 ? raw : raw.split('?')[0];
-      var src = 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(url) +
-        '&color=%2393a9d3&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false';
+      var opts = '&color=%2393a9d3&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false';
+      var src = raw.indexOf('w.soundcloud.com/player') !== -1
+        ? raw.split('&')[0] + opts
+        : 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(raw.split('?')[0]) + opts;
       var f = document.createElement('iframe');
       f.src = src;
       f.title = d.querySelector('.a-title').textContent;
-      f.allow = 'autoplay';
+      f.allow = 'autoplay; encrypted-media';
       f.loading = 'lazy';
       slot.appendChild(f);
     });
